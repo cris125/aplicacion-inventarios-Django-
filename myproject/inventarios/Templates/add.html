@@ -1,0 +1,46 @@
+
+{% extends "./index.html"%} 
+{% block title %} Agregar Inventarios {% endblock %}
+<head>
+   
+</head>
+<body>
+  
+  
+  {% block body %}
+  <div class="tabla">
+    <h1>listado de Productos</h1>
+    <table class="table" >
+        <tr>
+          <td class="tit">Nombre</td>
+          <td class="tit">Precio</td>
+          <td class="tit">Existencias</td>
+        </tr>
+        {% for x in product %}
+        <tr>
+        <td>{{ x.name }}</td>
+        <td>{{ x.price }}</td>
+        <td>{{ x.existence }}</td>
+        <td class="EdEltb"><a class="EdEl" href="edicionP/{{x.id}}" >Editar</a></td>
+        <td class="EdEltb"><a class="EdEl" href="eliminarP/{{x.id}}"> Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="nuevoP">
+    <h1>Agregar Productos</h1>
+    <form  method="POST" action="AgregarProducto"  >{% csrf_token %}
+      <input type="text" id="nameT" name="nameT" class="Btname" placeholder="Nombre Producto" required>
+      <input type="number" id="priceT" name="priceT" class="Btprice" placeholder="Precio Producto" step="1000" required>
+      <input type="number" id="existenceT" name="existenceT" class="Btexistence" placeholder="Existencias del Producto" required>
+      <button type="submit">Guardar</button>
+
+    </form>
+   
+    {% endblock %}
+</div>  
+</body>
+    
+    
+        
+        
